@@ -18,10 +18,10 @@ public class Localizacao {
     private Integer id;
 
     @Column(nullable = false)
-    private Double latitude;
+    private long latitude;
 
     @Column(nullable = false)
-    private Double longitude;
+    private long longitude;
 
     @ManyToOne
     @JoinColumn(name = "veiculo_id", nullable = false)
