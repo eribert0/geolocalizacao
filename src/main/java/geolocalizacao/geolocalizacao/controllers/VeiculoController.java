@@ -3,7 +3,9 @@ package geolocalizacao.geolocalizacao.controllers;
 import geolocalizacao.geolocalizacao.controllers.dto.VeiculoDTO;
 import geolocalizacao.geolocalizacao.entities.Veiculo;
 import geolocalizacao.geolocalizacao.services.VeiculoService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,10 +13,10 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/veiculos")
+@RequiredArgsConstructor
 public class VeiculoController {
 
-    @Autowired
-    private VeiculoService veiculoService;
+    private final VeiculoService veiculoService;
 
     @GetMapping
     public List<VeiculoDTO> getAllVeiculos() {
