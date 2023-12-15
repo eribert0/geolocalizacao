@@ -1,5 +1,6 @@
 package geolocalizacao.geolocalizacao.controllers;
 
+import geolocalizacao.geolocalizacao.controllers.dto.VeiculoDTO;
 import geolocalizacao.geolocalizacao.entities.Veiculo;
 import geolocalizacao.geolocalizacao.services.VeiculoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,18 +17,18 @@ public class VeiculoController {
     private VeiculoService veiculoService;
 
     @GetMapping
-    public List<Veiculo> getAllVeiculos() {
-        return veiculoService.getAllVeiculos();
+    public List<VeiculoDTO> getAllVeiculos() {
+        return veiculoService.getAllVeiculos().stream().map(Veiculo::mapToDTO).toList();
     }
 
     @GetMapping("/{id}")
-    public Optional<Veiculo> getVeiculoById(@PathVariable Integer id) {
-        return veiculoService.getVeiculoById(id);
+    public Optional<VeiculoDTO> getVeiculoById(@PathVariable Integer id) {
+        return veiculoService.getVeiculoById(id).map(Veiculo::mapToDTO);
     }
 
     @PostMapping
-    public Veiculo saveVeiculo(@RequestBody Veiculo veiculo) {
-        return veiculoService.saveVeiculo(veiculo);
+    public VeiculoDTO saveVeiculo(@RequestBody Veiculo veiculo) {
+        return veiculoService.saveVeiculo(veiculo).mapToDTO();
     }
 
     @DeleteMapping("/{id}")

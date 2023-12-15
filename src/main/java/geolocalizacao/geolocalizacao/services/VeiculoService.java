@@ -1,21 +1,22 @@
 package geolocalizacao.geolocalizacao.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import geolocalizacao.geolocalizacao.entities.Veiculo;
 import geolocalizacao.geolocalizacao.repositories.VeiculoRepository;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class VeiculoService {
     
-    @Autowired
-    private VeiculoRepository veiculoRepository;
+    private final VeiculoRepository veiculoRepository;
 
     public List<Veiculo> getAllVeiculos() {
-        return veiculoRepository.findAll();
+        var veiculos = veiculoRepository.findAll();
+        return veiculos;
     }
 
     public Optional<Veiculo> getVeiculoById(Integer id) {

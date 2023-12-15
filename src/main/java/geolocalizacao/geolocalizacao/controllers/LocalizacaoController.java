@@ -26,9 +26,9 @@ public class LocalizacaoController {
         return localizacaoService.getLocalizacaoById(id);
     }
 
-    @PostMapping
-    public Localizacao saveLocalizacao(@RequestBody Localizacao localizacao) {
-        return localizacaoService.saveLocalizacao(localizacao);
+    @PostMapping("/{veiculoId}")
+    public Localizacao saveLocalizacao(@RequestBody Localizacao localizacao, @PathVariable Integer veiculoId) {
+        return localizacaoService.saveLocalizacao(localizacao, veiculoId);
     }
 
     @DeleteMapping("/{id}")
